@@ -12,31 +12,52 @@ module.exports = function (seed) {
   var random = createRandomRange(randomFunc);
 
   var maps = [
-    'sym6.jpg', 'sym3.jpg',
-    'scifi.jpg', 'nature1.jpg',
-    'map7.jpg', 'geo5.jpg', 'geo4.jpg',
-    'geo3.jpg', 'geo1.jpg', 'fractal2.jpg',
-    'fractal1.jpg', 'eye.jpg', 'city5.jpg',
-    'city2.jpg', 'church2.jpg', 'architecture.jpg',
-    'pat1.jpg',
+    "sym6.jpg",
+    "sym3.jpg",
+    "scifi.jpg",
+    "nature1.jpg",
+    "map7.jpg",
+    "geo5.jpg",
+    "geo4.jpg",
+    "geo3.jpg",
+    "geo1.jpg",
+    "fractal2.jpg",
+    "fractal1.jpg",
+    "eye.jpg",
+    "city5.jpg",
+    "city2.jpg",
+    "church2.jpg",
+    "architecture.jpg",
+    "pat1.jpg",
+    "petal1.jpg",
+    "twig1.jpg",
+    "branches1.jpg",
+    "sapling1.jpg",
+    "clouds1.jpg",
+    "bamboo1.jpg",
+    "water1.jpg",
+    "water2.jpg",
+    "water3.jpg",
+    "water4.jpg",
+    "wood1.jpg",
+    "wood2.jpg",
   ].map(function (p) {
-    return './maps/' + p;
+    return "./maps/" + p;
   });
 
   var mapSrc = maps[Math.floor(random(maps.length))];
-  console.log(mapSrc);
 
   return {
     // rendering options
     random: randomFunc,
     seedName: seed,
-    pointilism: random(0, 0.1), // random(0, 0.1)
+    pointilism: random(0, 0.1),
     noiseScalar: [random(0.000001, 0.000001), random(0.0002, 0.004)],
     globalAlpha: 0.5,
     startArea: random(0.0, 1.5),
     maxRadius: random(5, 20), // random(5, 100)
     lineStyle: random(1) > 0.5 ? "round" : "square",
-    interval: random(0.001, 0.01),
+    interval: 0.001, // random(0.001, 0.01),
     count: Math.floor(random(50, 2000)),
     steps: Math.floor(random(100, 1000)),
     endlessBrowser: false, // Whether to endlessly step in browser
@@ -58,7 +79,6 @@ module.exports = function (seed) {
     filename: "render",
     outputDir: "output",
   };
-
 
   function getPalette() {
     var paletteColors = palettes[Math.floor(random() * palettes.length)];

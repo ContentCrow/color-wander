@@ -2,7 +2,9 @@
 
 Generative artwork in node/browser based on a seeded random.
 
-Blog post and more details:
+This is an updated version which runs on later node.js (20+) and python versions (11+) out of the box. Some npm packages have been updated and the code slightly adjusted.
+
+Blog post and more details from the original creator:
 
 [Generative Art with Node.js and Canvas](http://mattdesl.svbtle.com/generative-art-with-nodejs-and-canvas)
 
@@ -30,7 +32,7 @@ You can download some of these as lossless PNG [here](https://www.dropbox.com/sh
 ## Usage
 
 ```sh
-git clone https://github.com/mattdesl/color-wander.git
+git clone https://github.com/ContentCrow/color-wander.git
 cd color-wander
 npm install
 ```
@@ -54,6 +56,15 @@ node print 180423
 ```
 
 > *Note:* For this experiment, the Node output resolution is currently the same as the browser canvas. Typically this approach, using `node-canvas`, is only worthwhile for much larger canvas resolutions.
+
+## Deploy
+
+To deploy the project as a simple website.
+
+```sh
+npm run build
+```
+Then copy the browser.js and index.html files as well as the maps folder to your webserver root.
 
 ## License
 

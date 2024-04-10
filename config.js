@@ -1,13 +1,12 @@
-var seedRandom = require('seed-random');
-var palettes = require('./lib/color-palettes.json');
-var createRandomRange = require('./lib/random-range');
+var seedRandom = require("seed-random");
+var palettes = require("./lib/color-palettes.json");
+var createRandomRange = require("./lib/random-range");
 
 module.exports = function (seed) {
-  if (typeof seed === 'undefined') {
+  if (typeof seed === "undefined") {
     seed = String(Math.floor(Math.random() * 1000000));
   }
-
-  console.log('Seed:', seed);
+  console.log("Seed:", seed);
 
   var randomFunc = seedRandom(seed);
   var random = createRandomRange(randomFunc);
@@ -19,23 +18,24 @@ module.exports = function (seed) {
     'geo3.jpg', 'geo1.jpg', 'fractal2.jpg',
     'fractal1.jpg', 'eye.jpg', 'city5.jpg',
     'city2.jpg', 'church2.jpg', 'architecture.jpg',
-    'pat1.jpg'
+    'pat1.jpg',
   ].map(function (p) {
-    return 'maps/' + p;
+    return './maps/' + p;
   });
 
   var mapSrc = maps[Math.floor(random(maps.length))];
+  console.log(mapSrc);
 
   return {
     // rendering options
     random: randomFunc,
     seedName: seed,
-    pointilism: random(0, 0.1),
-    noiseScalar: [ random(0.000001, 0.000001), random(0.0002, 0.004) ],
+    pointilism: random(0, 0.1), // random(0, 0.1)
+    noiseScalar: [random(0.000001, 0.000001), random(0.0002, 0.004)],
     globalAlpha: 0.5,
     startArea: random(0.0, 1.5),
-    maxRadius: random(5, 100),
-    lineStyle: random(1) > 0.5 ? 'round' : 'square',
+    maxRadius: random(5, 20), // random(5, 100)
+    lineStyle: random(1) > 0.5 ? "round" : "square",
     interval: random(0.001, 0.01),
     count: Math.floor(random(50, 2000)),
     steps: Math.floor(random(100, 1000)),
@@ -44,7 +44,7 @@ module.exports = function (seed) {
     // background image that drives the algorithm
     debugLuma: false,
     backgroundScale: 1,
-    backgorundFille: 'black',
+    backgroundFill: "black",
     backgroundSrc: mapSrc,
 
     // browser/node options
@@ -55,16 +55,17 @@ module.exports = function (seed) {
 
     // node only options
     asVideoFrames: false,
-    filename: 'render',
-    outputDir: 'output'
+    filename: "render",
+    outputDir: "output",
   };
 
-  function getPalette () {
+
+  function getPalette() {
     var paletteColors = palettes[Math.floor(random() * palettes.length)];
     return arrayShuffle(paletteColors);
   }
 
-  function arrayShuffle (arr) {
+  function arrayShuffle(arr) {
     var rand;
     var tmp;
     var len = arr.length;
